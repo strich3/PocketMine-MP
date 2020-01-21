@@ -284,72 +284,42 @@ class Server{
 	/** @var Player[] */
 	private $playerList = [];
 
-	/**
-	 * @return string
-	 */
 	public function getName() : string{
 		return \pocketmine\NAME;
 	}
 
-	/**
-	 * @return bool
-	 */
 	public function isRunning() : bool{
 		return $this->isRunning;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getPocketMineVersion() : string{
 		return \pocketmine\VERSION;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getVersion() : string{
 		return ProtocolInfo::MINECRAFT_VERSION;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getApiVersion() : string{
 		return \pocketmine\BASE_VERSION;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getFilePath() : string{
 		return \pocketmine\PATH;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getResourcePath() : string{
 		return \pocketmine\RESOURCE_PATH;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getDataPath() : string{
 		return $this->dataPath;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getPluginPath() : string{
 		return $this->pluginPath;
 	}
 
-	/**
-	 * @return int
-	 */
 	public function getMaxPlayers() : int{
 		return $this->maxPlayers;
 	}
@@ -357,8 +327,6 @@ class Server{
 	/**
 	 * Returns whether the server requires that players be authenticated to Xbox Live. If true, connecting players who
 	 * are not logged into Xbox Live will be disconnected.
-	 *
-	 * @return bool
 	 */
 	public function getOnlineMode() : bool{
 		return $this->onlineMode;
@@ -366,40 +334,26 @@ class Server{
 
 	/**
 	 * Alias of {@link #getOnlineMode()}.
-	 * @return bool
 	 */
 	public function requiresAuthentication() : bool{
 		return $this->getOnlineMode();
 	}
 
-	/**
-	 * @return int
-	 */
 	public function getPort() : int{
 		return $this->getConfigInt("server-port", 19132);
 	}
 
-	/**
-	 * @return int
-	 */
 	public function getViewDistance() : int{
 		return max(2, $this->getConfigInt("view-distance", 8));
 	}
 
 	/**
 	 * Returns a view distance up to the currently-allowed limit.
-	 *
-	 * @param int $distance
-	 *
-	 * @return int
 	 */
 	public function getAllowedViewDistance(int $distance) : int{
 		return max(2, min($distance, $this->memoryManager->getViewDistance($this->getViewDistance())));
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getIp() : string{
 		$str = $this->getConfigString("server-ip");
 		return $str !== "" ? $str : "0.0.0.0";
