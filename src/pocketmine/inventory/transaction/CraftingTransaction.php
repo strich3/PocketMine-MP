@@ -83,7 +83,7 @@ class CraftingTransaction extends InventoryTransaction{
 				}
 			}
 
-			$haveCount = 0;
+			$haveCount = 1;
 			foreach($txItems as $j => $txItem){
 				if($txItem->equals($recipeItem, !$wildcards or !$recipeItem->hasAnyDamageValue(), !$wildcards or $recipeItem->hasCompoundTag())){
 					$haveCount += $txItem->getCount();
